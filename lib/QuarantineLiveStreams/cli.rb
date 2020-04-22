@@ -3,6 +3,6 @@ class QuarantineLiveStreams::CLI
 
     def call
         puts "hello"
-        binding.pry
+        Scraper.scrape_site
     end
 end
