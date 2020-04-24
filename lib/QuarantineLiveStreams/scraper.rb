@@ -11,11 +11,10 @@ class Scraper
         content = doc.css(".storytext")
         
         found = false
-        events_array = []
-
-        event_obj = {}
+        event_hash = {}
 
         content.children.each do |el|
+            
             if (el.name == 'h3')
                 found = true
             end
@@ -25,20 +24,23 @@ class Scraper
                 
                 case el.name                   
                     when 'h3'
-                        event_obj = {}
-                        event_obj[:date] = el.text
+                        #binding.pry
+                        date = event_hash[:date] = el.text
                     when 'h6'
-                        event_obj[:genre] = el.text
+                        genre = event_hash[:genre] = el.text
                     when 'p'
-                        event_obj[:name] = el.css('strong').text
-                        if event_obj[:time] = el.text.include?("Time")
-                            event_obj[:time] = el.css()
+                        # event_hash[:date] = date
+                        # event_hash[:genre] = genre
+                        event_hash[:name] = el.css('strong').text
+                        time = el.text.gsub(/.*?(?=Time)/im, "")
+                        event_hash[:time] = time = time.slice(0..(time.index('. ETL')))
+                        if event_hash[:link] = el.css('a').attr('href')
+                        event_hash[:link] = el.css('a').attr('href').value
                         end
-                        binding.pry
-                        event_obj[:link] = el.css('href')
+                        events_array << event_hash
                 end
             end
         end
-
+        puts events_array
     end
 end
