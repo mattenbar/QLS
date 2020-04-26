@@ -44,11 +44,13 @@ class QuarantineLiveStreams::CLI
 
              when "dates"
                 puts ""
-                puts "please enter the number of the date to see events for that date or 0 to go back to main menu"
+                puts "Please enter the number of the date to see events for that date or 0 to go back to main menu"
                 puts ""
                 display_all_dates #shows all dates
                 puts ""
                 date_input = gets.strip.to_i #gets what date we want from user
+                puts ""
+                puts "Please the number of the event you would like more info about"
                 puts ""
 
                 current_date = @all_dates_array[date_input - 1]
@@ -63,23 +65,23 @@ class QuarantineLiveStreams::CLI
                          @events_by_date << event_obj
                         end
                     end
-                end
-                
-                puts ""
-                event_input = gets.strip.to_i
-                
-                if event_input > 0 && event_input <= @all_events.length
-                    @current_event = @all_events[event_input - 1]
-                    
-                    puts ""
-                    puts "Live Stream: #{@current_event.name}"
-                    puts "Genre: #{@current_event.genre}"
-                    puts "Date: #{@current_event.date}"
-                    puts "Time: #{@current_event.time}"
-                    puts "Link: #{@current_event.link}"
-                end 
 
-             
+                    puts ""
+                
+                    event_input = gets.strip.to_i
+                
+                    if event_input > 0 && event_input <= @all_events.length
+                        @current_event = @all_events[event_input - 1]
+                    
+                        puts ""
+                        puts "Live Stream: #{@current_event.name}"
+                        puts "Genre: #{@current_event.genre}"
+                        puts "Date: #{@current_event.date}"
+                        puts "Time: #{@current_event.time}"
+                        puts "Link: #{@current_event.link}"
+                    end 
+                end
+
             when "genres"
                 puts ""
                 puts "please enter a number to see events for that genre or 0 to go back to main menu"
@@ -88,6 +90,8 @@ class QuarantineLiveStreams::CLI
                 display_all_genres
                 puts ""
                 genre_input = gets.strip.to_i
+                puts ""
+                puts "Please the number of the event you would like more info about"
                 puts ""
 
                 current_genre = @all_genres_array[genre_input - 1]
@@ -104,21 +108,22 @@ class QuarantineLiveStreams::CLI
                          @events_by_genre << event_obj
                         end
                     end
-                end
-
-                puts ""
-                event_input = gets.strip.to_i
-
-                if event_input > 0 && event_input <= @all_events.length
-                    @current_event = @all_events[event_input - 1]
                     
                     puts ""
-                    puts "Live Stream: #{@current_event.name}"
-                    puts "Genre: #{@current_event.genre}"
-                    puts "Date: #{@current_event.date}"
-                    puts "Time: #{@current_event.time}"
-                    puts "Link: #{@current_event.link}"
-                end 
+                
+                    event_input = gets.strip.to_i
+
+                    if event_input > 0 && event_input <= @all_events.length
+                        @current_event = @all_events[event_input - 1]
+                    
+                        puts ""
+                        puts "Live Stream: #{@current_event.name}"
+                        puts "Genre: #{@current_event.genre}"
+                        puts "Date: #{@current_event.date}"
+                        puts "Time: #{@current_event.time}"
+                        puts "Link: #{@current_event.link}"
+                    end
+                end    
             end
         end
     end
