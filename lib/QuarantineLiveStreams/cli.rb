@@ -1,16 +1,19 @@
 require "pry"
 class QuarantineLiveStreams::CLI
 
-
     def call
+        welcome
         make_events
         menu
+        goodbye
     end
 
     def menu
+
         input = nil
+
         while input != "exit"
-            puts "Welcome to QLS, your source for music live streams during quarantine"
+        
             puts 'Please enter "all" to see a list of all events, "dates" to see a list of dates available, "genres" to see a list of genres available, or "exit"'
 
             input = gets.strip.downcase
@@ -26,8 +29,6 @@ class QuarantineLiveStreams::CLI
              when "genres"
                 puts "please enter a number to see events for that genre"
                 display_all_genres
-             when input.is_a? Intger
-                puts
             end
         end
     end
@@ -60,5 +61,32 @@ class QuarantineLiveStreams::CLI
         array.each_with_index do |genre, index|
             puts "#{index + 1}. #{genre}"
         end
+    end
+
+    def welcome
+        puts ""
+        puts "|******************************|"
+        puts "|        WELCOME TO:           |"
+        puts "|         ╭━━┳╮╭━━╮            |"
+        puts "|         ┃╭╮┃┃┃━━┫            |"
+        puts "|         ┃╰╯┃╰╋━━┃            |"
+        puts "|         ╰━╮┣━┻━━╯            |"
+        puts "|         ╱╱╰╯                 |"
+        puts "|                              |"
+        puts "|   Quarantine Live Streaams   |"
+        puts "|******************************|"
+    end
+
+    def goodbye
+        puts "|******************************|"
+        puts "|   Quarantine Live Streaams   |"
+        puts "|         ╭━━┳╮╭━━╮            |"
+        puts "|         ┃╭╮┃┃┃━━┫            |"
+        puts "|         ┃╰╯┃╰╋━━┃            |"
+        puts "|         ╰━╮┣━┻━━╯            |"
+        puts "|         ╱╱╰╯                 |"
+        puts "|                              |"
+        puts "|    Thanks for listening      |"
+        puts "|******************************|"
     end
 end
