@@ -2,6 +2,7 @@ class Event
     attr_accessor :date, :genre, :name, :time, :link
 
      @@all = []
+     @events_by_genre = []
 
     def initialize(event_hash)
         @date = event_hash[:date]
