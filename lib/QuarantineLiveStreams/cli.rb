@@ -1,4 +1,5 @@
 require "pry"
+require 'colorize'
 class QuarantineLiveStreams::CLI
 
     def call
@@ -23,9 +24,10 @@ class QuarantineLiveStreams::CLI
 
             case input
              when "all"
-
+                puts ""
                 puts "Enter the number of the event you would like to see or the number 0 to go back to menu"
                 display_all_event_names
+                puts ""
                 all_input = gets.strip.to_i
                 
                 if all_input > 0 && all_input <= @all_events.length
@@ -41,10 +43,13 @@ class QuarantineLiveStreams::CLI
                 end
 
              when "dates"
-
+                puts ""
                 puts "please enter the number of the date to see events for that date or 0 to go back to main menu"
+                puts ""
                 display_all_dates #shows all dates
+                puts ""
                 date_input = gets.strip.to_i #gets what date we want from user
+                puts ""
 
                 current_date = @all_dates_array[date_input - 1]
 
@@ -59,7 +64,8 @@ class QuarantineLiveStreams::CLI
                         end
                     end
                 end
-
+                
+                puts ""
                 event_input = gets.strip.to_i
                 
                 if event_input > 0 && event_input <= @all_events.length
@@ -75,19 +81,24 @@ class QuarantineLiveStreams::CLI
 
              
             when "genres"
+                puts ""
                 puts "please enter a number to see events for that genre or 0 to go back to main menu"
+                "genres"
+                puts ""
                 display_all_genres
+                puts ""
                 genre_input = gets.strip.to_i
+                puts ""
 
                 current_genre = @all_genres_array[genre_input - 1]
 
                 find_by_genre(@all_genres_array.index(current_genre))
-                #binding.pry
+                
 
                 if genre_input > 0 && genre_input <= @all_genres_array.length
                     @events_by_genre = []
                     @all_events.each_with_index do |event_obj, index|
-                        #binding.pry
+                        
                         if event_obj.genre == current_genre
                          puts "#{index + 1}. #{event_obj.name}"
                          @events_by_genre << event_obj
@@ -95,6 +106,7 @@ class QuarantineLiveStreams::CLI
                     end
                 end
 
+                puts ""
                 event_input = gets.strip.to_i
 
                 if event_input > 0 && event_input <= @all_events.length
@@ -174,33 +186,33 @@ class QuarantineLiveStreams::CLI
 
     def welcome
         puts ""
-        puts "|******************************|"
-        puts "|        WELCOME TO:           |"
-        puts "|                              |"
-        puts "|         ╭━━┳╮╭━━╮            |"
-        puts "|         ┃╭╮┃┃┃━━┫            |"
-        puts "|         ┃╰╯┃╰╋━━┃            |"
-        puts "|         ╰━╮┣━┻━━╯            |"
-        puts "|         ╱╱╰╯                 |"
-        puts "|                              |"
-        puts "|   Quarantine Live Streams    |"
-        puts "|******************************|"
+        puts "|******************************|".colorize(:light_blue)
+        puts "|        WELCOME TO:           |".colorize(:light_blue)
+        puts "|                              |".colorize(:light_blue)
+        puts "|         ╭━━┳╮╭━━╮            |".colorize(:light_blue)
+        puts "|         ┃╭╮┃┃┃━━┫            |".colorize(:light_blue)
+        puts "|         ┃╰╯┃╰╋━━┃            |".colorize(:light_blue)
+        puts "|         ╰━╮┣━┻━━╯            |".colorize(:light_blue)
+        puts "|         ╱╱╰╯                 |".colorize(:light_blue)
+        puts "|                              |".colorize(:light_blue)
+        puts "|   Quarantine Live Streams    |".colorize(:light_blue)
+        puts "|******************************|".colorize(:light_blue)
         puts ""
     end
 
     def goodbye
         puts ""
-        puts "|******************************|"
-        puts "|   Quarantine Live Streams    |"
-        puts "|                              |"
-        puts "|         ╭━━┳╮╭━━╮            |"
-        puts "|         ┃╭╮┃┃┃━━┫            |"
-        puts "|         ┃╰╯┃╰╋━━┃            |"
-        puts "|         ╰━╮┣━┻━━╯            |"
-        puts "|         ╱╱╰╯                 |"
-        puts "|                              |"
-        puts "|    Thanks for listening      |"
-        puts "|******************************|"
+        puts "|******************************|".colorize(:light_blue)
+        puts "|   Quarantine Live Streams    |".colorize(:light_blue)
+        puts "|                              |".colorize(:light_blue)
+        puts "|         ╭━━┳╮╭━━╮            |".colorize(:light_blue)
+        puts "|         ┃╭╮┃┃┃━━┫            |".colorize(:light_blue)
+        puts "|         ┃╰╯┃╰╋━━┃            |".colorize(:light_blue)
+        puts "|         ╰━╮┣━┻━━╯            |".colorize(:light_blue)
+        puts "|         ╱╱╰╯                 |".colorize(:light_blue)
+        puts "|                              |".colorize(:light_blue)
+        puts "|    Thanks for listening      |".colorize(:light_blue)
+        puts "|******************************|".colorize(:light_blue)
         puts ""
     end
 end
