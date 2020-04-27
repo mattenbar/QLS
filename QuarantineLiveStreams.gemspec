@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   
   spec.add_developement_dependecy "bundler", "~> 2.0"
-  spec.add_developement_dependecy "rake", "~> 10.0"
+  spec.add_developement_dependecy 'rake', '~> 13.0'
   spec.add_developement_dependecy "pry"
   spec.add_dependency "nokogiri"
   spec.add_dependency "colorize", '~> 0.8.1'
