@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["mattenbar"]
   spec.email         = ["matthew.enbar@gmail.com"]
 
-  spec.summary       = ""
+  spec.summary       = %q{CLI scraper for quarantine live streams}
   spec.homepage      = "https://github.com/mattenbar/QLS"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
