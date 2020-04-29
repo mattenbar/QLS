@@ -20,10 +20,12 @@ class QuarantineLiveStreams::CLI
             case input
              when "all"
                 puts ""
-                puts "Enter the number of the event you would like to see or the number 0 to go back to menu"
+                puts "Enter the number of the event you would like to see,"
+                puts "or 0 to go back to menu"
                 display_all_event_names
                 puts ""
-                puts "Enter the number of the event you would like to see or the number 0 to go back to menu"
+                puts "Enter the number of the event you would like to see,"
+                puts "or 0 to go back to menu"
                 puts ""
                 all_input = gets.strip.to_i
                 
@@ -44,7 +46,8 @@ class QuarantineLiveStreams::CLI
                 puts ""
                 display_all_dates #shows all dates
                 puts ""
-                puts "Please enter the number of the date to see events for that date or 0 to go back to main menu"
+                puts "Please enter the number for the date to see events for that date,"
+                puts "or 0 to go back to main menu"
                 puts ""
                 date_input = gets.strip.to_i #gets what date we want from user
                 puts ""
@@ -63,7 +66,8 @@ class QuarantineLiveStreams::CLI
                     end
 
                     puts ""
-                    puts "Please enter the number of the event you would like more info about or 0 to return to main menu"
+                    puts "Please enter the number of the event you would like more info about,"
+                    puts "or 0 to return to main menu"
                     puts ""
                     event_input = gets.strip.to_i
                     puts ""
@@ -82,11 +86,11 @@ class QuarantineLiveStreams::CLI
 
             when "genres"
                 puts ""
-                puts "please enter a number to see events for that genre or 0 to go back to main menu"
-                puts ""
+                
                 display_all_genres
                 puts ""
-                puts "please enter a number to see events for that genre or 0 to go back to main menu"
+                puts "please enter the number of the genre you would like to see events for," 
+                puts "or 0 to go back to main menu"
                 puts ""
                 genre_input = gets.strip.to_i
                 puts ""
@@ -105,6 +109,7 @@ class QuarantineLiveStreams::CLI
                     
                     puts ""
                     puts "Please enter the number of the event you would like more info about"
+                    puts "or 0 to go back to main menu"
                     puts ""
                     event_input = gets.strip.to_i
                     puts ""
