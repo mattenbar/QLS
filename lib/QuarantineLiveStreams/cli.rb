@@ -19,6 +19,8 @@ class QuarantineLiveStreams::CLI
 
             case input
              when "all"
+                # instead of having all the code for the "all" action here
+                # why not break it out into it's own method?
                 puts ""
                 puts "Enter the number of the event you would like to see,"
                 puts "or 0 to go back to menu"
@@ -43,6 +45,8 @@ class QuarantineLiveStreams::CLI
                 end
 
              when "dates"
+                # instead of having all the code for the "dates" action here
+                # why not break it out into it's own method?              
                 puts ""
                 display_all_dates #shows all dates
                 puts ""
@@ -85,6 +89,8 @@ class QuarantineLiveStreams::CLI
                 end
 
             when "genres"
+                # instead of having all the code for the "genres" action here
+                # why not break it out into it's own method?              
                 puts ""
                 
                 display_all_genres
@@ -129,16 +135,19 @@ class QuarantineLiveStreams::CLI
     end
 
     def make_events
+        # Let's talk about memoization
         QuarantineLiveStreams::Event.create_from_collection
     end
 
     def display_all_event_names
+        # This sounds like it should be part of the Event class...
         QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
             puts "#{index + 1}. #{event_obj.name}"
         end
     end
 
     def display_all_dates
+        # This also
         @all_dates_array = QuarantineLiveStreams::Event.all.map do |event_obj|
             event_obj.date
         end
@@ -150,6 +159,7 @@ class QuarantineLiveStreams::CLI
     end
 
     def  display_all_genres
+        # Same
         @all_genres_array = QuarantineLiveStreams::Event.all.map do |event_obj|
             event_obj.genre
         end

@@ -1,4 +1,10 @@
 #!/usr/bin/env ruby
-require_relative "../lib/QuarantineLiveStreams"
+
+# Have bundler/setup run so that that setup script, which loads dependencies, can run.
+# Once done, you can require your gem from source itself.
+# You can actually just require the gem, it will know to look lin lib QuarantineLiveStreams
+# require_relative "../lib/QuarantineLiveStreams"
+require "bundler/setup"
+require 'QuarantineLiveStreams'
 
 QuarantineLiveStreams::CLI.new.call
