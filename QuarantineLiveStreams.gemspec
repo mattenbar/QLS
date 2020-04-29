@@ -7,6 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["matthew.enbar@gmail.com"]
 
   spec.summary       = %q{CLI scraper for quarantine live streams}
+  spec.description   = %q{Scrapes upcoming events that are being live streamed and then returns the date time and link ot the event}
   spec.homepage      = "https://github.com/mattenbar/QLS"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
