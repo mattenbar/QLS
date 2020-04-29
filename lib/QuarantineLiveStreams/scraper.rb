@@ -1,4 +1,4 @@
-class Scraper
+class QuarantineLiveStreams::Scraper
     @events_array = []
     
     def self.scrape_site
@@ -22,7 +22,7 @@ class Scraper
                     when 'p'
                         event_hash = {}
                         event_hash[:date] = date
-                        event_hash[:genre] = genre
+                        event_hash[:genre] = genre.downcase
                         event_hash[:name] = el.css('strong').text
                         time = el.text.gsub(/.*?(?=Time)/im, "")
                         event_hash[:time] = time = time.slice(0..(time.index('. ETL')))

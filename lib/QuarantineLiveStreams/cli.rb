@@ -23,37 +23,39 @@ class QuarantineLiveStreams::CLI
                 puts "Enter the number of the event you would like to see or the number 0 to go back to menu"
                 display_all_event_names
                 puts ""
+                puts "Enter the number of the event you would like to see or the number 0 to go back to menu"
+                puts ""
                 all_input = gets.strip.to_i
                 
-                if all_input > 0 && all_input <= Event.all.length
+                if all_input > 0 && all_input <= QuarantineLiveStreams::Event.all.length
                     
-                    @current_event = Event.all[all_input - 1]
+                    @current_event = QuarantineLiveStreams::Event.all[all_input - 1]
                     
                     puts ""
                     puts "Live Stream: #{@current_event.name}"
                     puts "Genre: #{@current_event.genre}"
                     puts "Date: #{@current_event.date}"
-                    puts "Time: #{@current_event.time}"
-                    puts "Link: #{@current_event.link}"
+                    puts "Time: #{@current_event.time} ET."
+                    puts "Link: #{@current_event.link.colorize(:green)}"
+                    puts ""
                 end
 
              when "dates"
                 puts ""
-                puts "Please enter the number of the date to see events for that date or 0 to go back to main menu"
-                puts ""
                 display_all_dates #shows all dates
+                puts ""
+                puts "Please enter the number of the date to see events for that date or 0 to go back to main menu"
                 puts ""
                 date_input = gets.strip.to_i #gets what date we want from user
                 puts ""
-                puts "Please the number of the event you would like more info about"
-                puts ""
+                
 
                 current_date = @all_dates_array[date_input - 1] 
 
-                find_by_date(@all_dates_array.index(current_date)) #searching by string name
+                QuarantineLiveStreams::Event.find_by_date(@all_dates_array.index(current_date)) #searching by string name
 
                 if date_input > 0 && date_input <= @all_dates_array.length
-                    @events_by_date = Event.all.each_with_index do |event_obj, index|
+                    @events_by_date = QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
                         if event_obj.date == current_date
                             puts "#{index + 1}. #{event_obj.name}"
                             event_obj
@@ -61,38 +63,40 @@ class QuarantineLiveStreams::CLI
                     end
 
                     puts ""
+                    puts "Please enter the number of the event you would like more info about or 0 to return to main menu"
+                    puts ""
                     event_input = gets.strip.to_i
                     puts ""
+                    
                 
-                    if event_input > 0 && event_input <= Event.all.length
-                        @current_event = Event.all[event_input - 1]
+                    if event_input > 0 && event_input <= QuarantineLiveStreams::Event.all.length
+                        @current_event = QuarantineLiveStreams::Event.all[event_input - 1]
 
                         puts "Live Stream: #{@current_event.name}"
                         puts "Genre: #{@current_event.genre}"
                         puts "Date: #{@current_event.date}"
-                        puts "Time: #{@current_event.time}"
-                        puts "Link: #{@current_event.link}"
+                        puts "Time: #{@current_event.time} ET."
+                        puts "Link: #{@current_event.link.colorize(:green)}"
                     end 
                 end
 
             when "genres"
                 puts ""
                 puts "please enter a number to see events for that genre or 0 to go back to main menu"
-                "genres"
                 puts ""
                 display_all_genres
                 puts ""
-                genre_input = gets.strip.to_i
+                puts "please enter a number to see events for that genre or 0 to go back to main menu"
                 puts ""
-                puts "Please the number of the event you would like more info about"
+                genre_input = gets.strip.to_i
                 puts ""
 
                 current_genre = @all_genres_array[genre_input - 1]
-                find_by_genre(@all_genres_array.index(current_genre))
+                QuarantineLiveStreams::Event.find_by_genre(@all_genres_array.index(current_genre))
                 
 
                 if genre_input > 0 && genre_input <= @all_genres_array.length
-                    @events_by_genre = Event.all.each_with_index do |event_obj, index|
+                    @events_by_genre = QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
                         if event_obj.genre == current_genre
                             puts "#{index + 1}. #{event_obj.name}"
                             event_obj
@@ -100,17 +104,19 @@ class QuarantineLiveStreams::CLI
                     end
                     
                     puts ""
+                    puts "Please enter the number of the event you would like more info about"
+                    puts ""
                     event_input = gets.strip.to_i
                     puts ""
 
-                    if event_input > 0 && event_input <= Event.all.length
-                        @current_event = Event.all[event_input - 1]
+                    if event_input > 0 && event_input <= QuarantineLiveStreams::Event.all.length
+                        @current_event = QuarantineLiveStreams::Event.all[event_input - 1]
                         
                         puts "Live Stream: #{@current_event.name}"
                         puts "Genre: #{@current_event.genre}"
                         puts "Date: #{@current_event.date}"
-                        puts "Time: #{@current_event.time}"
-                        puts "Link: #{@current_event.link}"
+                        puts "Time: #{@current_event.time} ET."
+                        puts "Link: #{@current_event.link.colorize(:green)}"
                     end
                 end    
             end
@@ -118,17 +124,17 @@ class QuarantineLiveStreams::CLI
     end
 
     def make_events
-        Event.create_from_collection
+        QuarantineLiveStreams::Event.create_from_collection
     end
 
     def display_all_event_names
-        Event.all.each_with_index do |event_obj, index|
+        QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
             puts "#{index + 1}. #{event_obj.name}"
         end
     end
 
     def display_all_dates
-        @all_dates_array = Event.all.map do |event_obj|
+        @all_dates_array = QuarantineLiveStreams::Event.all.map do |event_obj|
             event_obj.date
         end
 
@@ -139,37 +145,13 @@ class QuarantineLiveStreams::CLI
     end
 
     def  display_all_genres
-        @all_genres_array = Event.all.map do |event_obj|
+        @all_genres_array = QuarantineLiveStreams::Event.all.map do |event_obj|
             event_obj.genre
         end
 
         @all_genres_array = @all_genres_array.uniq
         @all_genres_array.each_with_index do |genre, index|
             puts "#{index + 1}. #{genre}"
-        end
-    end
-
-    def find_by_genre(genre)
-        @events_by_genre = []
-        Event.all.each do |event_obj|
-            if event_obj.genre == genre
-                @events_by_genre << event_obj
-            end
-        end
-        @events_by_genre.each_with_index do |event_obj, index|
-            puts "#{index + 1}. #{event_obj.name}"
-        end
-    end
-
-    def find_by_date(date)
-        @events_by_date = []
-        Event.all.each do |event_obj|
-            if event_obj.date == date
-                @events_by_date << event_obj
-            end
-        end
-        @events_by_date.each_with_index do |event_obj, index|
-            puts "#{index + 1}. #{event_obj.name}"
         end
     end
 

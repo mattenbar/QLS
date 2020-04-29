@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["matthew.enbar@gmail.com"]
 
   spec.summary       = ""
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/mattenbar/QLS"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
