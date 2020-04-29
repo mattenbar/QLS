@@ -1,13 +1,16 @@
 class QuarantineLiveStreams::Scraper
-    @events_array = []
+    @events_array = [] # Not sure if you need these class instance variables.
+                       # Let's go over them.
     
-    def self.scrape_site
+    def self.scrape_npr
         url = "https://www.npr.org/2020/03/17/816504058/a-list-of-live-virtual-concerts-to-watch-during-the-coronavirus-shutdown"
         doc = Nokogiri::HTML(open(url))
         content = doc.css(".storytext")
         found = false
         date = "test"  
         genre = "test"
+        # This is pretty messy but scraping always is but this could probably be
+        # cleaned up a ton if I looked at the page.
         content.children.each do |el|
             if (el.name == 'h3')
                 found = true
@@ -27,7 +30,8 @@ class QuarantineLiveStreams::Scraper
                         time = el.text.gsub(/.*?(?=Time)/im, "")
                         event_hash[:time] = time = time.slice(0..(time.index('. ETL')))
                         if event_hash[:link] = el.css('a').attr('href')
-                        event_hash[:link] = el.css('a').attr('href').value
+                        # INDENT
+                            event_hash[:link] = el.css('a').attr('href').value
                         end
                         @events_array << event_hash
                 end
