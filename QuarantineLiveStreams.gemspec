@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency "pry"
   spec.add_dependency "nokogiri"
-  spec.add_dependency "URI"
+  spec.add_dependency "uri"
   spec.add_dependency "colorize", '~> 0.8.1'
 
 end

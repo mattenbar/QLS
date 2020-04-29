@@ -8,3 +8,4 @@ gem "bundler", "~> 2.0"
 gem "nokogiri"
 gem "pry"
 gem 'colorize', '~> 0.8.1'
+gem 'uri'
