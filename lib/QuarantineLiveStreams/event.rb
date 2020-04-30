@@ -16,7 +16,6 @@ class QuarantineLiveStreams::Event
     end
 
     def self.create_from_collection(events_array = nil)
-        # Nicer way to allow for an argument with a default that's complex.
         events_array ||= QuarantineLiveStreams::Scraper.scrape_npr
         events_array.each do |event_hash|
          self.new(event_hash)
@@ -55,7 +54,6 @@ class QuarantineLiveStreams::Event
     end
     
     def self.display_all_event_names
-        # This sounds like it should be part of the Event class...
         self.all.each_with_index do |event_obj, index|
             puts "#{index + 1}. #{event_obj.name}"
         end

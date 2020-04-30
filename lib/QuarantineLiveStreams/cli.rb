@@ -55,18 +55,18 @@ class QuarantineLiveStreams::CLI
 
     def dates           
         puts ""
-        QuarantineLiveStreams::Event.display_all_dates #shows all dates
+        QuarantineLiveStreams::Event.display_all_dates 
         puts ""
         puts "Please enter the number for the date to see events for that date,"
         puts "or 0 to go back to main menu"
         puts ""
-        date_input = gets.strip.to_i #gets what date we want from user
+        date_input = gets.strip.to_i 
         puts ""
                 
 
         current_date = QuarantineLiveStreams::Event.all_dates_array[date_input - 1] 
 
-        QuarantineLiveStreams::Event.display_by_date(QuarantineLiveStreams::Event.all_dates_array.index(current_date)) #searching by string name
+        QuarantineLiveStreams::Event.display_by_date(QuarantineLiveStreams::Event.all_dates_array.index(current_date)) 
 
         if date_input > 0 && date_input <= QuarantineLiveStreams::Event.all_dates_array.length
             @events_by_date = QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
@@ -138,7 +138,6 @@ class QuarantineLiveStreams::CLI
     end
 
     def make_events
-        # Let's talk about memoization
         QuarantineLiveStreams::Event.create_from_collection
     end
 
