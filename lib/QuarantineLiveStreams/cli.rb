@@ -55,7 +55,8 @@ class QuarantineLiveStreams::CLI
 
     def dates           
         puts ""
-        QuarantineLiveStreams::Event.display_all_dates 
+        QuarantineLiveStreams::Event.create_dates_array
+        print_dates
         puts ""
         puts "Please enter the number for the date to see events for that date,"
         puts "or 0 to go back to main menu"
@@ -183,6 +184,12 @@ class QuarantineLiveStreams::CLI
     def print_all_event_names
         QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
             puts "#{index + 1}. #{event_obj.name}"
+        end
+    end
+
+    def print_dates
+        QuarantineLiveStreams::Event.all_dates_array.each_with_index do |date, index|
+            puts "#{index + 1}. #{date}"
         end
     end
 end

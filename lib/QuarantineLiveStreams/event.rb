@@ -42,12 +42,6 @@ class QuarantineLiveStreams::Event
 
         @@all_dates_array = @@all_dates_array.uniq
     end
-    
-    def self.print_dates
-        @@all_dates_array.each_with_index do |date, index|
-            puts "#{index + 1}. #{date}"
-        end
-    end
 
     def self.create_genres_array
         @@all_genres_array = QuarantineLiveStreams::Event.all.map do |event_obj|
