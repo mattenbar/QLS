@@ -7,11 +7,7 @@ class QuarantineLiveStreams::Event
      @@all_dates_array = []
 
     def initialize(event_hash)
-        @date = event_hash[:date]
-        @genre = event_hash[:genre]
-        @name = event_hash[:name]
-        @time = event_hash[:time]
-        @link = event_hash[:link]
+        event_hash.each {|key, value| self.send("#{key}=",value)}
         @@all << self
     end
 
@@ -52,27 +48,6 @@ class QuarantineLiveStreams::Event
             puts "#{index + 1}. #{date}"
         end
     end
-    
-    def self.display_all_event_names
-        self.all.each_with_index do |event_obj, index|
-            puts "#{index + 1}. #{event_obj.name}"
-        end
-    end
-
-    def self.all_dates_array
-        @@all_dates_array
-    end
-
-    def  self.display_all_genres
-        self.create_genres_array
-        self.print_genres
-    end
-
-    def self.print_genres
-        @@all_genres_array.each_with_index do |genre, index|
-            puts "#{index + 1}. #{genre}"
-        end
-    end
 
     def self.create_genres_array
         @@all_genres_array = QuarantineLiveStreams::Event.all.map do |event_obj|
@@ -84,5 +59,9 @@ class QuarantineLiveStreams::Event
 
     def self.all_genres_array
         @@all_genres_array
+    end
+
+    def self.all_dates_array
+        @@all_dates_array
     end
 end

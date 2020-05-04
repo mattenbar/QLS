@@ -32,7 +32,7 @@ class QuarantineLiveStreams::CLI
         puts ""
         puts "Enter the number of the event you would like to see,"
         puts "or 0 to go back to menu"
-        QuarantineLiveStreams::Event.display_all_event_names
+        print_all_event_names
         puts ""
         puts "Enter the number of the event you would like to see,"
         puts "or 0 to go back to menu"
@@ -98,7 +98,8 @@ class QuarantineLiveStreams::CLI
 
     def genres           
         puts ""
-        QuarantineLiveStreams::Event.display_all_genres
+        QuarantineLiveStreams::Event.create_genres_array
+        print_genres
         puts ""
         puts "please enter the number of the genre you would like to see events for," 
         puts "or 0 to go back to main menu"
@@ -171,5 +172,17 @@ class QuarantineLiveStreams::CLI
         puts "|    Thanks for listening      |".colorize(:light_blue)
         puts "|******************************|".colorize(:light_blue)
         puts ""
+    end
+
+    def print_genres
+        QuarantineLiveStreams::Event.all_genres_array.each_with_index do |genre, index|
+            puts "#{index + 1}. #{genre}"
+        end
+    end
+
+    def print_all_event_names
+        QuarantineLiveStreams::Event.all.each_with_index do |event_obj, index|
+            puts "#{index + 1}. #{event_obj.name}"
+        end
     end
 end
