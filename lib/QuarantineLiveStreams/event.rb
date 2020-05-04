@@ -32,7 +32,6 @@ class QuarantineLiveStreams::Event
 
     def self.display_all_dates
         self.create_dates_array
-        self.print_dates
     end
 
     def self.create_dates_array
