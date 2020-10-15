@@ -1,6 +1,7 @@
 # QuarantineLiveStreams
 
 Find upcoming music live streams during Quarantine
+To start up use ./bin/QLS 
 
 ## Installation
 
